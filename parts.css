@@ -1,0 +1,493 @@
+@charset "UTF-8";
+
+
+/* -------------------------------------------
+side-btn
+------------------------------------------- */
+.side-btn-container {
+    position: fixed;
+    display: none;
+    top: 50%;
+    right: 0%;
+    transform: translateY( -50%);
+    z-index: 950;
+}
+
+.side-btn-wrapper {
+    width: 80px;
+    height: 200px;
+    z-index: 1000;
+    transition: all .5s ease;
+
+    .side-btn {
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        transition: all .5s ease;
+
+        &:hover {
+            transform: scale(1.1);
+            opacity: 1;
+
+            a {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.to-contact {
+    margin-bottom: 12px;
+
+    .side-btn {
+        display: grid;
+        justify-items: center;
+        align-content: center;
+        background: #61ce70;
+        border-radius: 40px 0 0 40px;
+        writing-mode: vertical-rl;
+        /* 右から左へ縦書き */
+        text-orientation: mixed;
+        /* 日本語の縦書きを自然に */
+        overflow: hidden;
+    }
+}
+
+/* -------------------------------------------
+.to-topのためのCSS
+------------------------------------------- */
+.to-top {
+    position: fixed;
+    /* position: fixed; */
+    display: block;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    background: #ff2a2a;
+    transition: all .5s ease;
+    z-index: 950;
+}
+.to-top {
+    bottom: 0%;
+    right: 0%;
+}
+
+/*×に変化*/
+.to-top span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    transition: all .4s;
+}
+
+.to-top:hover {
+    background: #333;
+    border: none;
+}
+
+.to-top:hover span {
+    color: #fff;
+}
+
+/* -------------------------------------------
+メインスライダーのためのcss
+------------------------------------------- */
+.main-slider {
+    position: relative;
+    z-index: 1;
+    /*↑z-indexの値をh1のz-indexの値よりも小さくして背景に回す*/
+    height: 100vh;
+    /*スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
+
+}
+
+/*　背景画像設定　*/
+
+.main-slider-item01 {
+    background: url(/img/top/main_slide.jpg);
+}
+
+.main-slider-item02 {
+    background: url(/img/top/main_slide2.jpg);
+}
+
+.main-slider-item03 {
+    background: url(/img/top/main_slide3.jpeg);
+}
+
+.main-slider-item04 {
+    background: url(/img/top/main_slide4.jpg);
+}
+
+.main-slider-item {
+    width: 100%;
+    /*各スライダー全体の横幅を画面の高さいっぱい（100%）にする*/
+    height: 100vh;
+    /*各スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
+    background-repeat: no-repeat;
+    /*背景画像をリピートしない*/
+    background-position: center;
+    /*背景画像の位置を中央に*/
+    background-size: cover;
+    /*背景画像が.main-slider-item全体を覆い表示*/
+}
+
+/* -------------------------------------------
+サブスライダーのためのcss
+------------------------------------------- */
+.sub-slider img {
+    width: 100%;
+    /*スライダー内の画像を横幅100%に*/
+    height: auto;
+}
+
+/*slickのJSで書かれるタグ内、スライド左右の余白調整*/
+
+.sub-slider .slick-slide {
+    margin: 0 10px;
+    /*スライド左右の余白調整*/
+}
+
+/* -------------------------------------------
+ケーススライダーのためのcss
+------------------------------------------- */
+.case-slider img {
+    width: 100%;
+    /*スライダー内の画像を横幅100%に*/
+    height: auto;
+}
+
+/*slickのJSで書かれるタグ内、スライド左右の余白調整*/
+
+.case-slider .slick-slide {
+    margin: 0 10px;
+    /*スライド左右の余白調整*/
+}
+
+/* -------------------------------------------
+タブメニュー
+------------------------------------------- */
+/*tabの形状*/
+.tab {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tab li {
+    flex-grow: 1;
+}
+
+.tab li.active {
+    border: 8px solid #61ce70;
+}
+
+.tab li a {
+    display: block;
+    background: #fff;
+    padding: 10px 20px;
+}
+
+/*liにactiveクラスがついた時の形状*/
+.tab li.active a {
+    background: #fff;
+}
+
+/*エリアの表示非表示と形状*/
+.area {
+    display: none;
+    /*はじめは非表示*/
+    opacity: 0;
+    /*透過0*/
+    background: #fbe8e6;
+    padding: 50px 0;
+}
+
+/*areaにis-activeというクラスがついた時の形状*/
+.area.is-active {
+    display: block;
+    /*表示*/
+    animation-name: displayAnime;
+    /*ふわっと表示させるためのアニメーション*/
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes displayAnime {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* -------------------------------------------
+アコーディオン
+------------------------------------------- */
+/*アコーディオン全体*/
+.accordion-area {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto 24px;
+    list-style: none;
+}
+
+.accordion-area section {
+    border: 1px solid #ccc;
+}
+
+/*アコーディオンタイトル*/
+.accordion-area-title {
+    position: relative;
+    /*+マークの位置基準とするためrelative指定*/
+    cursor: pointer;
+    font-size: var(--font-size-m);
+    font-weight: normal;
+    padding: 2% 2% 2% 50px;
+    transition: all .5s ease;
+}
+
+/*アイコンの＋と×*/
+.accordion-area-title::before,
+.accordion-area-title::after {
+    position: absolute;
+    content: '';
+    width: 15px;
+    height: 2px;
+    background-color: #333;
+
+}
+
+.accordion-area-title::before {
+    top: 48%;
+    left: 15px;
+    transform: rotate(0deg);
+
+}
+
+.accordion-area-title::after {
+    top: 48%;
+    left: 15px;
+    transform: rotate(90deg);
+
+}
+
+/*　offというクラスがついたら形状変化　*/
+
+.accordion-area-title.off::before {
+    transform: rotate(45deg);
+}
+
+.accordion-area-title.off::after {
+    transform: rotate(-45deg);
+}
+
+/*アコーディオンで現れるエリア*/
+.accordion-area-box {
+    display: none;
+    /*はじめは非表示*/
+    background: #f3f3f3;
+    margin: 0 3% 3% 3%;
+    padding: 3%;
+}
+
+/* -------------------------------------------
+fade
+------------------------------------------- */
+/* その場で */
+/* .fadeIn {
+    animation-name: fadeInAnime;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+
+@keyframes fadeInAnime {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+} */
+
+/* 下から */
+/* .fadeUp {
+    animation-name: fadeUpAnime;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@keyframes fadeUpAnime {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} */
+
+/* 上から */
+/* .fadeDown {
+    animation-name: fadeDownAnime;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@keyframes fadeDownAnime {
+    from {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} */
+
+/* 左から */
+/* .fadeLeft {
+    animation-name: fadeLeftAnime;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-delay: .5s;
+    opacity: 0;
+}
+
+@keyframes fadeLeftAnime {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+} */
+
+/* 右から */
+/* .fadeRight {
+    animation-name: fadeRightAnime;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-delay: .5s;
+    opacity: 0;
+}
+
+@keyframes fadeRightAnime {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+} */
+
+
+/* 初期状態 */
+.fadeIn,
+.fadeLeft,
+.fadeRight,
+.fadeUp,
+.fadeBottom {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+/* アニメーション適用時 */
+.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 各アニメーション */
+.fadeIn {
+    transform: translateY(20px);
+}
+.fadeLeft {
+    transform: translateX(-30px);
+}
+.fadeRight {
+    transform: translateX(30px);
+}
+.fadeUp {
+    transform: translateY(30px);
+}
+.fadeBottom {
+    transform: translateY(-30px);
+}
+
+/* アニメーション後の状態 */
+.visible.fadeIn,
+.visible.fadeLeft,
+.visible.fadeRight,
+.visible.fadeUp,
+.visible.fadeBottom {
+    transform: translate(0);
+}
+
+
+/* -------------------------------------------
+レスポンシブ
+------------------------------------------- */
+/* タブレット */
+@media (width <=960px) {
+    .wrapper {
+        max-width: 960px;
+        padding: 0 6%;
+    }
+
+    /* -------------------------------------------
+side-btn
+------------------------------------------- */
+    .side-btn-wrapper {
+        width: 25px;
+        height: 130px;
+        font-size: 1.2rem;
+    }
+
+    .to-contact {
+        margin-bottom: 12px;
+    }
+}
+
+/* スマホ */
+@media (width <=430px) {
+    .wrapper {
+        max-width: 428px;
+        padding: 0 4%;
+    }
+
+    /* -------------------------------------------
+    ボタンのためのCSS
+    ------------------------------------------- */
+    .to-top {
+        width: 50px;
+        height: 50px;
+
+        span{
+            font-size: var(--font-size-m);
+        }
+    }
+
+
+}
+

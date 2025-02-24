@@ -1,0 +1,138 @@
+@charset "UTF-8";
+
+main {
+    padding-top: 100px;
+}
+
+section {
+    padding-top: 0;
+}
+
+.case-study {
+    .case-main-container {
+        width: 100vw;
+        position: relative;
+        /* margin-bottom: var(--margin-bottom-l); */
+        padding: var(--margin-bottom-l) 0;
+        background-color: var(--sub-color);
+        z-index: -1;
+
+        h2 {
+            font-size: var(--font-size-l);
+        }
+    }
+
+    .wave-container {
+        z-index: -1;
+        margin-bottom: var(--margin-bottom-ll);
+    }
+
+    .case-main-text {
+        text-align: center;
+
+        p {
+            padding: 32px 16px;
+        }
+    }
+
+    .case-slider {
+        /* margin-bottom: 96px; */
+        z-index: 100;
+
+        .box {
+            display: grid;
+            align-content: space-between;
+            min-height: 750px;
+
+            .text-box {
+                h3 {
+                    margin-bottom: 24px;
+                }
+            }
+
+            .img-box {
+
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                    aspect-ratio: 4/3;
+                }
+            }
+        }
+    }
+
+    .btn-container {
+        padding-bottom: 0;
+    }
+}
+
+.wave-container {
+    position: relative;
+    background: var(--sub-color);
+    height: 50px;
+}
+
+.wave {
+    position: absolute;
+    height: 70px;
+    width: 100%;
+    background: var(--sub-color);
+    bottom: 0;
+}
+
+.wave::before,
+.wave::after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 100% 50%;
+}
+
+.wave::before {
+    width: 55%;
+    height: 109%;
+    background-color: #fff;
+    right: -1.5%;
+    top: 60%;
+}
+
+.wave::after {
+    width: 55%;
+    height: 100%;
+    background-color: var(--sub-color);
+    left: -1.5%;
+    top: 40%;
+}
+
+@media (width <=960px) {
+    .case-study {
+        .case-slider {
+            .box {
+                min-height: 550px;
+            }
+        }
+    }
+}
+
+
+@media (width <=430px) {
+    .case-study {
+        .case-main-container {
+            width: 100vw;
+            position: relative;
+            /* margin-bottom: var(--margin-bottom-l); */
+            padding: var(--margin-bottom-l) 0 0 0;
+            background-color: var(--sub-color);
+            z-index: -1;
+    
+            h2 {
+                font-size: var(--font-size-l);
+            }
+        }
+    
+        .wave-container {
+            z-index: -1;
+            margin-bottom: var(--margin-bottom-l);
+        }
+    }
+}
